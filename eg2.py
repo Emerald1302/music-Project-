@@ -3,17 +3,14 @@ from tkinter import messagebox
 from song import Song
 
 # Songs for display
-songs = [
-    Song(title='You & Me', singer='Jennie', genre='POP', duration='2:57'),
-    Song(title='Stay', singer='Black Pink', genre='POP', duration='3:49'),
-    Song(title='Starboy', singer='The Weekend', genre='Rap', duration='2:57'),
-    Song(title='Blueming', singer='IU', genre='POP', duration='3:35'),
-    Song(title='My Love', singer='Westlife', genre='POP', duration='3:00'),
-    Song(title='Blue', singer='Billie Eilish', genre='POP', duration='2:57'),
-    Song(title='Style', singer='Taylor Swift', genre='POP', duration='3:57'),
-    Song(title='Angel Baby', singer='Troye Sivan', genre='POP', duration='2:44'),
-    Song(title='Radio', singer='Lana Del Rey', genre='POP', duration='3:47'),
-    ]
+f = open('all_songs.txt')
+all_songs=[]
+lines = f.readlines()
+for line in lines:
+    data = line.split(',')
+    all_songs.append(Song(title=data[0],singer=data[1],genre=data[2],duration=data[3])) 
+    
+    
 
 fav_songs = []
 
@@ -58,12 +55,11 @@ def main_page():
 
 # Update the function for displaying all songs
 
-
 def display_songs():
     display_page = tk.Toplevel(root)
     display_page.title("Display Songs")
     button_display_all = tk.Button(display_page, text='Display all songs', command=lambda: [
-                                   display_messages(display_page), display_page.withdraw()], width=15)
+                                   display_all(display_page), display_page.withdraw()], width=15)
     button_display_all.grid(row=0, column=0, padx=10, pady=10)
 
     button_display_favorite_songs = tk.Button(display_page, text="Display Favorite Songs", command=lambda: [
@@ -77,31 +73,9 @@ def display_songs():
 
 
 # Function to display a message
-def display_messages(prevScreen):
+def display_all(prevScreen):
     display_page = tk.Toplevel(root)
-    display_page.title("Display Songs")
-
-    # Configure columns for centering
-    display_page.columnconfigure(0, weight=1)
-    display_page.columnconfigure(1, weight=1)
-    display_page.columnconfigure(2, weight=1)
-    display_page.columnconfigure(3, weight=1)
-
-    # Create header labels
-    title_label = tk.Label(display_page, text="Title")
-    artist_label = tk.Label(display_page, text="Artist")
-    album_label = tk.Label(display_page, text="Album")
-    duration_label = tk.Label(display_page, text="Duration")
-
-    # Place header labels with padding
-    title_label.grid(row=0, column=0, padx=10, pady=5)
-    artist_label.grid(row=0, column=1, padx=10, pady=5)
-    album_label.grid(row=0, column=2, padx=10, pady=5)
-    duration_label.grid(row=0, column=3, padx=10, pady=5)
-
-    # Separator frame
-    separator = tk.Frame(display_page, height=2, bg="gray")
-    separator.grid(row=1, column=0, columnspan=4, sticky="ew")
+    display_page.title("Display All")
 
     # Create frames for listboxes to center content
     title_frame = tk.Frame(display_page)
@@ -115,11 +89,28 @@ def display_messages(prevScreen):
     listbox_albums = tk.Listbox(album_frame, height=10)
     listbox_durations = tk.Listbox(duration_frame, height=10)
 
-    for song in songs:
+    for song in all_songs:
         listbox_titles.insert(tk.END, song.title)
         listbox_artists.insert(tk.END, song.singer)
         listbox_albums.insert(tk.END, song.genre)
         listbox_durations.insert(tk.END, song.duration)
+
+    # Disable direct scrolling of the listboxes
+    def no_scroll(event):
+        return "break"
+
+    listbox_titles.bind("<MouseWheel>", no_scroll)
+    listbox_artists.bind("<MouseWheel>", no_scroll)
+    listbox_albums.bind("<MouseWheel>", no_scroll)
+    listbox_durations.bind("<MouseWheel>", no_scroll)
+
+    # Create and configure the scrollbar
+    scrollbar = tk.Scrollbar(display_page, orient=tk.VERTICAL)
+    scrollbar.config(command=lambda *args: [listbox_titles.yview(*args), listbox_artists.yview(*args), listbox_albums.yview(*args), listbox_durations.yview(*args)])
+    listbox_titles.config(yscrollcommand=scrollbar.set)
+    listbox_artists.config(yscrollcommand=scrollbar.set)
+    listbox_albums.config(yscrollcommand=scrollbar.set)
+    listbox_durations.config(yscrollcommand=scrollbar.set)
 
     # Place listboxes within frames and center frames
     title_frame.grid(row=2, column=0)
@@ -130,6 +121,9 @@ def display_messages(prevScreen):
     listbox_albums.pack(expand=True)
     duration_frame.grid(row=2, column=3)
     listbox_durations.pack(expand=True)
+
+    # Place the scrollbar
+    scrollbar.grid(row=2, column=4, sticky='ns')
 
     button_back = tk.Button(display_page, text="Back", command=lambda: [
         display_page.destroy(),
@@ -182,3 +176,4 @@ button_login.grid(row=3, column=0, columnspan=2, pady=10)
 
 # run mainloop
 root.mainloop()
+
