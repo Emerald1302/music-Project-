@@ -2,17 +2,24 @@ import tkinter as tk
 from tkinter import messagebox
 from song import Song
 
-# Songs for display
+# read all songs file
 f = open('all_songs.txt')
 all_songs=[]
 lines = f.readlines()
 for line in lines:
     data = line.split(',')
     all_songs.append(Song(title=data[0],singer=data[1],genre=data[2],duration=data[3])) 
-    
+
+
+# read fav songs file
+f = open('fav_song.txt')
+fav_songs = []
+lines = f.readlines()
+for line in lines:
+    data = line.split(',')
+    fav_songs.append(Song(title=data[0],singer=data[1],genre=data[2],duration=data[3])) 
     
 
-fav_songs = []
 
 # Function for Login Button click
 
@@ -59,11 +66,11 @@ def display_songs():
     display_page = tk.Toplevel(root)
     display_page.title("Display Songs")
     button_display_all = tk.Button(display_page, text='Display all songs', command=lambda: [
-                                   display_all(display_page), display_page.withdraw()], width=15)
+                                   display_all(display_page,'Display All Songs',all_songs), display_page.withdraw()], width=15)
     button_display_all.grid(row=0, column=0, padx=10, pady=10)
 
     button_display_favorite_songs = tk.Button(display_page, text="Display Favorite Songs", command=lambda: [
-                                              display_fav(display_page), display_page.withdraw()], width=15)
+                                              display_all(display_page,'Display Favourite Songs',fav_songs), display_page.withdraw()], width=15)
     button_display_favorite_songs.grid(row=0, column=1, padx=10, pady=10)
 
     button_back = tk.Button(display_page, text="Back", command=lambda: [
@@ -73,9 +80,9 @@ def display_songs():
 
 
 # Function to display a message
-def display_all(prevScreen):
+def display_all(prevScreen,label,songList):
     display_page = tk.Toplevel(root)
-    display_page.title("Display All")
+    display_page.title(label)
 
     # Create frames for listboxes to center content
     title_frame = tk.Frame(display_page)
@@ -89,7 +96,7 @@ def display_all(prevScreen):
     listbox_albums = tk.Listbox(album_frame, height=10)
     listbox_durations = tk.Listbox(duration_frame, height=10)
 
-    for song in all_songs:
+    for song in songList:
         listbox_titles.insert(tk.END, song.title)
         listbox_artists.insert(tk.END, song.singer)
         listbox_albums.insert(tk.END, song.genre)
@@ -129,16 +136,6 @@ def display_all(prevScreen):
         display_page.destroy(),
         prevScreen.deiconify()])
     button_back.grid(row=5, column=1, columnspan=2, pady=10)
-
-
-def display_fav(prevScreen):
-    display_page = tk.Toplevel(root)
-    display_page.title("Display Favourite songs")
-
-    button_back = tk.Button(display_page, text="Back", command=lambda: [
-        display_page.destroy(),
-        prevScreen.deiconify()])
-    button_back.grid(row=1, column=0, columnspan=2, pady=10)
 
 
 def add_to_favorite(message):
