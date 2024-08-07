@@ -1,4 +1,0 @@
-Title,Singer,Genre,Duration
-Cruel Summer,Taylor Swift,Pop,2:59
-Shape of You,Ed Sheeran,Pop,3:51
-Someone You Loved,Lewis Capaldi,Pop,3:02
