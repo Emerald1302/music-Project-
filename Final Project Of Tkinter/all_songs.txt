@@ -1,0 +1,43 @@
+Flowers Apple,Miley Cyrus CCC,Pop,3:40
+Anti-Hero,Taylor Swift,Pop,3:15
+Last Night,Morgan Wallen,Country Pop,3:30
+Unholy,James Aurthor,Pop,4:11
+Die For You,The Weeknd,Pop,3:35
+Cruel Summer,Taylor Swift,Pop,2:59
+Shape of You,Ed Sheeran,Pop,3:51
+Someone You Loved,Lewis Capaldi,Pop,3:02
+Dance Monkey,Tones and I,Jass,3:30
+Levitating,Dua Lipa,Pop,3:20
+Vibe of the Summer, Jane Doe, Pop, 3:15
+Midnight Dreams, John Smith, Alternative, 4:02
+Electric Love, The Beat Brothers, Dance, 3:40
+Heartbreaker, Emily Taylor, R&B, 3:10
+Summer Nights, DJ Cool, EDM, 3:50
+Runaway, Anna Lee, Country, 3:20
+Falling Stars, Ricky Blaze, Hip-Hop, 2:58
+Lost in the Moment, Liam Harper, Pop Rock, 3:45
+Feel Alive, Sophie Bright, Indie Pop, 3:05
+City Lights, Mark Jones, Synthwave, 4:00
+Daydream, Olivia Rose, Folk, 3:25
+Into the Night, The Urban Band, Soul, 3:35
+Shine On, Zachary Cole, Rock, 4:10
+On Fire, Lily Green, Dance Pop, 3:30
+Chasing Clouds, Jesse Cruz, Alternative Rock, 3:50
+Good Vibes, Maria Santos, Reggae, 3:20
+Echoes, Ethan Brooks, Electronic, 4:05
+Breaking Free, Chloe Martin, Pop, 3:25
+Endless Summer, Ryan Murphy, Rock Pop, 3:55
+Dreamstate, Nina Wells, Chillwave, 3:15
+Wild Nights, Chris Evans, Country Rock, 3:45
+Moonlight Serenade, Ava Green, Jazz, 4:00
+Gravity, Ben Stone, Acoustic, 3:30
+New Horizons, Samantha Gray, Pop EDM, 3:40
+Hearts on Fire, Mia Davis, Synth Pop, 3:50
+Golden Skies, Dylan Brooks, Indie Rock, 3:35
+Nightfall, Rebecca Adams, Ambient, 4:10
+Starry Eyes, Justin Carter, R&B, 3:20
+Running Wild, Ella Smith, Dancehall, 3:45
+Bright Future, Lucas Young, Pop Rock, 3:25
+Good day,IU,Pop,3:44
+Blueming,IU,Pop,4:33
+Yellow Card,IU,Pop,3:45
